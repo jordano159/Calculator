@@ -4,7 +4,10 @@
         <%= form_for @operation, html: { class: "grid grid-cols-4 gap-4 bg-cyan-50 border p-8 lg:w-1/3 w-3/4" } do |f| %>
             <%= hidden_field_tag "operation[]", @operation.operand_one || @operation.result %>
             <%= hidden_field_tag "operation[]", @operation.operation %>
-            <div class="col-span-4 bg-gray-200 p-8 text-right font-bold text-lg mb-2 border border-gray-300 text-gray-500 drop-shadow-md"><%= @operation.result || @operation.message %></div>
+            <div class="col-span-4 bg-gray-200 p-8 text-right text-md mb-2 border border-gray-300 text-gray-500 drop-shadow-md">
+                <div><%= session[:last_calculation] %></div>
+                <div class="font-bold text-lg"><%= @operation.result || @operation.message %></div>
+            </div>
             <input type="submit" name="operation[]" value="1" class="button" >
             <input type="submit" name="operation[]" value="2" class="button" >
             <input type="submit" name="operation[]" value="3" class="button" >
@@ -21,4 +24,5 @@
             <input type="submit" name="operation[]" value="/" class="button" >
         <% end %>
     </div>
+    
 <% end %>

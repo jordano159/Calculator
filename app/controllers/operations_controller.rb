@@ -7,6 +7,7 @@ class OperationsController < ApplicationController
         @operation = Operation.build(params[:operation])
 
         if @operation.valid?
+            session[:last_calculation] = "#{@operation.message}#{@operation.operand_two}"
             @operation.calculate!
             render :new, status: :ok
         else
