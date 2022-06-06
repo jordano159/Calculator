@@ -17,5 +17,37 @@ class Operation
     def calculate!
         __send__(operation.to_s)
     end
+
+    def message
+        @operand_one ? "#{@operand_one}#{@operation}" : "..."
+    end
+
+    private
+
+    def +
+        @result = @operand_one + @operand_two
+        reset
+    end
+
+    def -
+        @result = @operand_one - @operand_two
+        reset
+    end
+
+    def *
+        @result = @operand_one * @operand_two
+        reset
+    end
+
+    def /
+        @result = @operand_one / @operand_two
+        reset
+    end
+
+    def reset
+        @operand_one = nil
+        @operand_two = nil
+        @operation = nil
+    end
     
 end
